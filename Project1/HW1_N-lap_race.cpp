@@ -5,7 +5,6 @@ int main()
 {
 	int t;
 	int N, C;
-	int input;
 	cin >> t;
 	for (int i = 0; i < t; i++) {
 		bool result = false;
@@ -14,24 +13,42 @@ int main()
 		int* array = new int[N * C];
 		int* car = new int[C]; // car_num의 첫번째 등장 순서를 기록하는 array
 		int* block = new int[C]; // car_num의 등장 개수를 기록하는 array
-		for (int i = 0; i < N * C; i++) {
-			cin >> input;
-			for (int k = 0; k < index_c; k++) {
-				if (car[k] == input) {
-					block[k]++;
-					if (k != 0) {
-						if (block[k] > block[k - 1]) result = true;
+		for (int j = 0; j < N * C; j++) {
+			cin >> array[j];
+		}
+		for (int j = 0; j < C; j++) {
+			block[j] = 0;
+		}
+		for (int j = 0; j < N * C; j++) {
+			if (j == 0) {
+				car[j] = array[j];
+				block[j]++;
+				index_c++;
+			}
+			else {
+				for (int k = 0; k <= index_c; k++) {
+					if (k == index_c) {
+						car[k] = array[j];
+						block[k]++;
+						index_c++;
+						break;
 					}
-					break;
+					if (car[k] == array[j]) {
+						block[k]++;
+						if (k != 0) {
+							if (block[k] > block[k - 1]) {
+								result = true;
+							}
+						}
+					}
+
 				}
-				if (k == index_c) {
-					car[k] = input;
-					block[k]++;
-					index_c++;
-				}
-			} 
+			}
 		}
 		if (result == false) cout << "NO" << endl;
 		else cout << "YES" << endl;
+		delete[] array;
+		delete[] block;
+		delete[] car;
 	}
 }
