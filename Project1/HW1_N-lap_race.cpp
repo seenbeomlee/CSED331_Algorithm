@@ -3,50 +3,52 @@ using namespace std;
 
 int main()
 {
-	int t;
-	int N, C;
+	int t, N, C, temp;
+	bool result, check = false;
 	cin >> t;
+	// //
 	for (int i = 0; i < t; i++) {
-		bool result = false;
 		cin >> N >> C;
-		int index_c = 0; // 현재까지 채워진 car_num 개수 
-		int* array = new int[N * C];
-		int* car = new int[C]; // car_num의 첫번째 등장 순서를 기록하는 array
-		int* block = new int[C]; // car_num의 등장 개수를 기록하는 array
-		for (int j = 0; j < N * C; j++) {
-			cin >> array[j];
-		}
-		for (int j = 0; j < C; j++) {
+		int index = 0;
+		int* car = new int[C];
+		int* block = new int[C];
+		result = check = false;
+		for (int j = 0; j < C; j++) { // initialize car and block
 			block[j] = 0;
-			car[j] = 0;
 		}
+
+		// // // //
 		for (int j = 0; j < N * C; j++) {
-			if (j == 0) {
-				car[j] = array[j];
-				block[j]++;
-				index_c++;
-			}
-			else {
-				for (int k = 0; k <= index_c; k++) {
-					if (k == index_c) {
-						car[k] = array[j];
+			cin >> temp;
+			if (check == false) {
+				for (int k = 0; k <= index; k++) {
+					// k == index인 경우, 새로운 원소를 추가해야함
+					if (k == index) {
+						car[k] = temp;
 						block[k]++;
-						index_c++;
+						index++;
 						break;
 					}
-					if (car[k] == array[j]) {
-						block[k]++;
-						if (k != 0) {
-							if (block[k] > block[k - 1]) {
-								result = true;
-							}
+					// k != index인 경우, k++ 하거나 같은 원소가 있으면 block ++
+					else if (temp == car[k]) {
+						if (k == 0) {
+							block[k]++;
+							break;
+						}
+						else {
+							block[k]++;
+							if (block[k] > block[k - 1]) result = check = true;
+							break;
 						}
 					}
-
 				}
 			}
 		}
-		if (result == false) cout << "NO" << endl;
-		else cout << "YES" << endl;
-	}
+		// // // //
+		delete[] car;
+		delete[] block;
+		if (result == true) cout << "YES" << endl;
+		else cout << "NO" << endl;
+	} // //
+	return 0;
 }

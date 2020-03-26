@@ -27,5 +27,8 @@
     <ClCompile Include="HW1_Angular.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="parctice.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

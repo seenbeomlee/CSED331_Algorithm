@@ -5,7 +5,7 @@ int main()
 {
 	int times;
 	int num;
-	long long middle;
+	int middle;
 	long long result;
 	cin >> times;
 	for (int i = 0; i < times; i++) {
@@ -21,6 +21,7 @@ int main()
 				else result += (list[j] - middle);
 			}
 		cout << result << endl;
+		delete[] list;
 	}
 	return 0;
 }
