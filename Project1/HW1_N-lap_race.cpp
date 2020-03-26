@@ -18,6 +18,7 @@ int main()
 		}
 		for (int j = 0; j < C; j++) {
 			block[j] = 0;
+			car[j] = 0;
 		}
 		for (int j = 0; j < N * C; j++) {
 			if (j == 0) {
@@ -47,8 +48,5 @@ int main()
 		}
 		if (result == false) cout << "NO" << endl;
 		else cout << "YES" << endl;
-		delete[] array;
-		delete[] block;
-		delete[] car;
 	}
 }
