@@ -9,7 +9,7 @@ int main() {
 	cin >> t;
 	for (int i = 0; i < t; i++) {
 		cin >> N;
-		cin >> first_elem; // read A[0]
+		cin >> first_elem; // read A[0] first
 		current_sum = max_sum = first_elem;
 		for (int j = 1; j < N; j++) {
 			cin >> temp;
