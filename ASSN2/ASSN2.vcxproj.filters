@@ -24,5 +24,11 @@
     <ClCompile Include="ASSN2_Fibonacci_Number.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="ASSN2_Personal_Color.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ASSN2_Top-k_Query.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
