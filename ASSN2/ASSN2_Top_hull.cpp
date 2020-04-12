@@ -36,19 +36,48 @@ bool compare(line a, line b) {
 }
 
 bool compy(line a, line b) {
-	return a.y < b.y;
+	return a.y > b.y;
 }
 
 int main() {
 	int t;
-	vector<line> input_list, temp_list, result_list;
-
 	cin >> t;
 
 	for (int i = 0; i < t; i++) {
+		vector<line> input_list, temp_list, result_list;
+		int N;
+		cin >> N;
+
+		input_list.reserve(N);
+		temp_list.reserve(N);
+		result_list.reserve(5 * N);
+		for (int j = 0; j < N; j++) {
+			int a, b, c;
+			cin >> a >> b >> c;
+			line temp(a, b, c);
+			input_list.push_back(temp);
+		}
+		sort(input_list.begin(), input_list.end(), compare);
+		// initial state //
+		line now = input_list[0];
+		line comp = input_list[1];
+		int next = 1; // prevÀÇ next index
+		int start = now.lx;
+
+		line templine;
+		while (next < N) {
+		here:
+			if (now.rx < comp.lx) {
+				templine.reset(start, now.rx,  now.y)
+					result_list.push_back
+			}
 
 
 
+
+
+
+		}
 
 	}
 	return 0;
