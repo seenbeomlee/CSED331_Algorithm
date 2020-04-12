@@ -9,6 +9,7 @@ int main(void) {
 	int R, G, B;
 	int result_R, result_G, result_B;
 	int RGB;
+	int check = 0;
 
 	cin >> dec >> t;
 
@@ -17,7 +18,7 @@ int main(void) {
 		cin >> dec >> N;
 		for (int j = 0; j < N; j++) cin >> hex >> N_array[j];
 		
-		while (N != 1) {
+		while (N > 1) {
 			for (int j = 0; j < N; j += 3) {
 				//
 				B = N_array[j] % 16;
@@ -26,7 +27,10 @@ int main(void) {
 				N_array[j] /= 16;
 				R = N_array[j] % 16;
 				N_array[j] /= 16;
-				if (R == G && G == B) result_R = R;
+				if (R == G && G == B) {
+					result_R = R;
+					check++;
+				}
 				else result_R = (R + G + B) % 16;
 				//
 				B = N_array[j+1] % 16;
@@ -35,7 +39,10 @@ int main(void) {
 				N_array[j+1] /= 16;
 				R = N_array[j+1] % 16;
 				N_array[j+1] /= 16;
-				if (R == G && G == B) result_G = 15;
+				if (R == G && G == B) {
+					result_G = G;
+					check++;
+				}
 				else result_G = (R + G + B) % 16;
 				//
 				B = N_array[j+2] % 16;
@@ -44,11 +51,16 @@ int main(void) {
 				N_array[j+2] /= 16;
 				R = N_array[j+2] % 16;
 				N_array[j+2] /= 16;
-				if (R == G && G == B) result_B = B;
+				if (R == G && G == B) {
+					result_B = B;
+					check++;
+				}
 				else result_B = (R + G + B) % 16;
 				//
+				if (check == 3) result_G = 15;
 				RGB = result_R * 16 * 16 + result_G * 16 + result_B;
 
+				check = 0;
 				N_array[j / 3] = RGB;
 			}
 			N /= 3;
@@ -70,19 +82,19 @@ int main(void) {
 
 		result = N_array[0];
 
-		if (N_array[0] == 0) {
+		if (result == 0) {
 			cout.setf(ios::uppercase);
 			cout << 0 << 0 << 0 << endl;
 			continue;
 		}
 
-		else if (N_array[0] < 16) {
+		else if (result < 16) {
 			cout.setf(ios::uppercase);
 			cout << 0 << 0 << hex << result << endl;
 			continue;
 		}
 
-		else if (N_array[0] < 16 * 16) {
+		else if (result < 16 * 16) {
 			cout.setf(ios::uppercase);
 			cout << 0 << hex << result << endl;
 			continue;

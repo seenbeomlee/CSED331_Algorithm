@@ -30,5 +30,8 @@
     <ClCompile Include="ASSN2_Top-k_Query.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="ASSN2_Top_hull.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
