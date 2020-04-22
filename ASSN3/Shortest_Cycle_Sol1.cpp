@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <queue>
+#include <algorithm>
 
 using namespace std;
 
@@ -87,8 +88,10 @@ int main()
 
         for (int j = 0; j < m; j++) {
             cin >> x >> y;
+            if (x > y) swap(x, y);
             gr[x].push_back(y);
             //gr[y].push_back(x);
+
         }
         cout << shortest_cycle(n, gr) << endl;
     }
