@@ -30,9 +30,6 @@
     <ClCompile Include="ASSN3_Shortest_K-path.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="ASSN3_Car_Parade.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Sort_topological.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -43,6 +40,12 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="erase_overlab_vector.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ASSN3_Car_Parade_TIMELIMIT.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ASSN3_Car_Parade.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

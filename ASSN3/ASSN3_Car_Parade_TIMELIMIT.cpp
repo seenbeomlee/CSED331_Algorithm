@@ -1,4 +1,4 @@
-#include<iostream>
+de<iostream>
 #include<vector>
 #include<algorithm>
 #include<queue>
@@ -33,7 +33,7 @@ int main() {
 		block** S_list = new block * [N];
 		for (int j = 0; j < N; j++) S_list[j] = new block[M];
 		/* make an array with array[N+1][M+1] */
-		
+
 		for (int j = 0; j < N; j++) {
 			for (int k = 0; k < M; k++) {
 				cin >> input;
@@ -43,7 +43,6 @@ int main() {
 				input_s.push_back(input);
 			}
 		}
-		
 		/* now we have S list in 'input_s' */
 		sort(input_s.begin(), input_s.end());
 		input_s.erase(unique(input_s.begin(), input_s.end()), input_s.end());
@@ -53,42 +52,40 @@ int main() {
 			trial = input_s.back();
 			input_s.pop_back();
 			if (trial > S_list[0][0].S || trial > S_list[N - 1][M - 1].S) continue;
-			if (trial > S_list[0][1].S && trial > S_list[1][0].S) continue;
-			if (trial > S_list[N - 2][M - 1].S && trial > S_list[N - 1][M - 2].S) continue;
-			/*
+			if (trial > S_list[0][1].S&& trial > S_list[1][0].S) continue;
+			if (trial > S_list[N - 2][M - 1].S&& trial > S_list[N - 1][M - 2].S) continue;
+
 			for (int j = 0; j < N; j++) {
 				for (int k = 0; k < M; k++) {
 					if (S_list[j][k].S >= trial) S_list[j][k].check = true;
 					else S_list[j][k].check = false;
 				}
 			}
-			*/
+
 			queue<block> temp;
 			temp.push(S_list[0][0]);
 
 			while (!temp.empty()) {
-
 				block current = temp.front();
 				temp.pop();
 
-				//up
-				if (current.row - 1 >= 0 && S_list[current.row - 1][current.column].S >= trial) {
-					S_list[current.row - 1][current.column].S = trial-1;
+				if (current.row - 1 >= 0 && S_list[current.row - 1][current.column].check == true) {
+					S_list[current.row - 1][current.column].check = false;
 					temp.push(S_list[current.row - 1][current.column]);
 				}
-				//down
-				if (current.row + 1 < N && S_list[current.row + 1][current.column].S >= trial) {
-					S_list[current.row + 1][current.column].S = trial-1;
+
+				if (current.row + 1 < N && S_list[current.row + 1][current.column].check == true) {
+					S_list[current.row + 1][current.column].check = false;
 					temp.push(S_list[current.row + 1][current.column]);
 				}
-				//left
-				if (current.column - 1 >= 0 && S_list[current.row][current.column - 1].S >= trial) {
-					S_list[current.row][current.column - 1].S = trial-1;
+
+				if (current.column - 1 >= 0 && S_list[current.row][current.column - 1].check == true) {
+					S_list[current.row][current.column - 1].check = false;
 					temp.push(S_list[current.row][current.column - 1]);
 				}
-				//right
-				if (current.column + 1 < M && S_list[current.row][current.column + 1].S >= trial) {
-					S_list[current.row][current.column + 1].S = trial-1;
+
+				if (current.column + 1 < M && S_list[current.row][current.column + 1].check == true) {
+					S_list[current.row][current.column + 1].check = false;
 					temp.push(S_list[current.row][current.column + 1]);
 				}
 
@@ -97,7 +94,6 @@ int main() {
 					break;
 				}
 			}
-
 			if (RESULT != -1) break;
 		}
 		if (RESULT == -1) cout << "NO" << endl;
