@@ -18,9 +18,6 @@
     <ClCompile Include="ASSN3_Shortest_Cycle.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Shortest_Cycle_Sol1.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="ASSN3_Shortest_Cycle_error.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -46,6 +43,12 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="ASSN3_Car_Parade.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ASSN3_Shortest_Cycle_Sol2.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Shortest_Cycle.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
