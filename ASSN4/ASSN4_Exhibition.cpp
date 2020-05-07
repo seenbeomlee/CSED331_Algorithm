@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <deque>
+#include <set>
 #include <algorithm>
 
 using namespace std;
@@ -17,18 +17,18 @@ public:
 	}
 };
 /* compare for vector list */
-bool comp_due(item &A, item &B) {
+bool comp_due(item& A, item& B) {
 	if (A.d < B.d) return false;
 	else if (A.d > B.d) return true;
 	else return A.f < B.f;
 }
 /* compare for deque list */
-
+/*
 bool comp_fee_due(item& A, item& B) {
 	if (A.f < B.f) return true;
 	else if (A.f > B.f) return false;
 	else return A.d > B.d;
-}
+*/
 /* compare for set list */
 /*
 struct comp_fee_due {
@@ -49,8 +49,8 @@ int main() {
 	for (int i = 0; i < t; i++) {
 		cin >> n;
 		vector<item> list1;
-		deque<item> list2;
-		//set<item, comp_fee_due> list2;
+		//deque<item> list2;
+		multiset<long long> list2;
 		count = 1;
 		RESULT = 0;
 		for (int j = 0; j < n; j++) {
@@ -61,30 +61,31 @@ int main() {
 		sort(list1.begin(), list1.end(), comp_due);
 		item current = list1.back();
 		list1.pop_back();
-		//list2.insert(current);
-		list2.push_back(current);
-		while(!list1.empty()) {
+		list2.insert(current.f);
+		//list2.push_back(current);
+		while (!list1.empty()) {
 			item prev = current;
 			current = list1.back();
 			list1.pop_back();
 			if (current.d > prev.d) {
-				if(count > prev.d) sort(list2.begin(), list2.end(), comp_fee_due); /* this is critical problem for TIMELIMIT */
+				//if (count > prev.d) sort(list2.begin(), list2.end(), comp_fee_due); /* this is critical problem for TIMELIMIT */
 				while (count > prev.d) {
 					list2.erase(list2.begin());
 					count--;
 				}
 			}
-			//list2.insert(current);
-			list2.push_back(current);
+			list2.insert(current.f);
+			//list2.push_back(current);
 			count++;
 		}
-		sort(list2.begin(), list2.end(), comp_fee_due);
+		//sort(list2.begin(), list2.end(), comp_fee_due);
 		while (count > current.d) {
 			list2.erase(list2.begin());
 			count--;
 		}
 		for (auto& temp : list2)
-			RESULT += temp.f;
+			//RESULT += temp.f;
+			RESULT += temp;
 		cout << RESULT << endl;
 	}
 	return 0;
