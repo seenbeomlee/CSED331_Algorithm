@@ -1,7 +1,9 @@
 #include<iostream>
 #include<vector>
 #include<algorithm>
-#include <cmath>
+
+#include<cmath>
+
 using namespace std;
 
 class line {
@@ -62,9 +64,11 @@ long long find(const vector<line>& list, long long n) {
 	vector<line> right_list;
 	long long R1, R2, R3;
 	long long left, right, height;
-	for (int i = 0; i < n / 2; i++) left_list.push_back(list[i]);
-	for (int i = n / 2; i < n; i++) right_list.push_back(list[i]);
+	left = n / 2 - 1;
+	right = n / 2;
+	for (int i = 0; i < right; i++) left_list.push_back(list[i]);
 	R1 = find(left_list, left_list.size());
+	for (int i = right; i < n; i++) right_list.push_back(list[i]);
 	R2 = find(right_list, right_list.size());
 	/*
 	long long height = list[0].y;
@@ -75,8 +79,6 @@ long long find(const vector<line>& list, long long n) {
 	}
 	R3 = height * (rightmost - leftmost);
 	*/
-	left = n / 2 - 1;
-	right = n / 2;
 	R3 = min(list[right].y, list[left].y) * (list[right].r - list[left].l);
 	height = min(list[right].y, list[left].y);
 	while (left != 0 || right != n-1) {
@@ -87,6 +89,6 @@ long long find(const vector<line>& list, long long n) {
 		else if (list[right + 1].y < list[left - 1].y) left--;
 		R3 = max(R3, (list[right].r - list[left].l) * min(min(list[right].y, list[left].y), height));
 	}
-	//R3 = max(R3, (list[right].r - list[left].l) * min(min(list[right].y, list[left].y), height));
+
 	return max(max(R1, R2), R3);
 }

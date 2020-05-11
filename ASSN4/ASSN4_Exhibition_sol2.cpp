@@ -63,13 +63,15 @@ int main() {
 			count++;
 		}
 		//sort(list2.begin(), list2.end(), comp_fee_due);
-		while (count > current.d) {
-			list2.erase(list2.begin());
-			count--;
-		}
 		for (auto& temp : list2)
 			//RESULT += temp.f;
 			RESULT += temp;
+		int m = 0;
+		for (auto& temp2 : list2) {
+			if (m >= (count - (current.d))) break;
+			RESULT -= temp2;
+			m++;
+		}
 		cout << RESULT << endl;
 	}
 	return 0;
