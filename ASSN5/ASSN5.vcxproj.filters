@@ -15,19 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ASSN4_Exhibition_TIMELIMIT.cpp">
+    <ClCompile Include="ASSN5_Robots.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="ASSN4_Exhibition.cpp">
+    <ClCompile Include="ASSN5_2D-Convolution_TIMELIMIT.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="ASSN4_Riverside-Park.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="ASSN4_Exhibition_sol2.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="ASSN4_Riverside-Park_sol2.cpp">
+    <ClCompile Include="ASSN5_2D-Convolution.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
