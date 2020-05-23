@@ -24,5 +24,8 @@
     <ClCompile Include="ASSN5_2D-Convolution.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="ASSN5_Antarctic-Adventure.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
