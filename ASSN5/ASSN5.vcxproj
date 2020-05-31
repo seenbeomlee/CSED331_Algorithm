@@ -25,6 +25,7 @@
     <ClCompile Include="ASSN5_2D-Convolution_TIMELIMIT.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="ASSN5_Antarctic-Adventure-hard.cpp" />
     <ClCompile Include="ASSN5_Antarctic-Adventure_sol2.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
