@@ -30,10 +30,12 @@ public:
     }
 };
 
+/* we dont need to sort 
 bool comp_to(line& A, line& B) {
     if (A.to < B.to) return false;
     else return true;
 }
+*/
 
 bool find(int start, int m, vector<int> &a_check, vector<int> &b_check, vector<line>* lines, vector<bool> &check) { /* you must receive vector<> by reference or, it initialized !! */
     if (check[start])
@@ -77,20 +79,19 @@ int main() {
             line temp(input_to);
             lines[input_from].push_back(temp);
         }
-
+/* we dont need to sort it
         for (int j = 0; j < n; j++) {
             //if(lines[j].size() > 1)
             sort(lines[j].begin(), lines[j].end(), comp_to);
-        }
-
+        }1
+*/
         for (int j = 0; j < n; j++) {
             //if (lines[j].empty()) continue;
 
             fill(check.begin(), check.end(), false);
 
-            if (find(j, m, a_check, b_check, lines, check)) {
-                res++;
-            }
+            if (find(j, m, a_check, b_check, lines, check)) res++;
+            
         }
 
         delete[] lines;

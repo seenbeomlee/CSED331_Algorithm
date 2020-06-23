@@ -37,7 +37,7 @@ int main() {
 				}
 				else {
 					DP[j][k] = arr[j][k] + DP[j - 1][k] + DP[j][k - 1] - DP[j - 1][k - 1];
-				}
+				} 
 			}
 		/*
 		for (int j = 0; j < N; j++) {

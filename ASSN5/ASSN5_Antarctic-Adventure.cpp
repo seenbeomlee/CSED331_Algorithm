@@ -45,7 +45,7 @@ int main() {
 	int N; /* # of fish points, 1 ¡Â N ¡Â 1,000 */
 	int x, y; /* fish point cordinates, 0 ¡Â x, y ¡Â 1,000,000 */
 
-	vector<point>::iterator upper;
+	//vector<point>::iterator upper;
 	/* print the maximum number of fishes the penguin can get*/
 	/* penguin only can move to +x and +y */
 
@@ -64,9 +64,9 @@ int main() {
 		sort(list.begin(), list.end(), comp_x_y);
 		int RESULT = 1;
 
-		for (point &temp1 : list) {
+		for (point& temp1 : list) {
 			vector<point> temp_list = return_point(list, temp1);
-			
+
 			if (temp_list.size() == 0) { /* like (0, 5) */
 				continue;
 			}
@@ -87,7 +87,7 @@ vector<point> return_point(vector<point> list, point temp1) {
 
 	vector<point> temp_list;
 
-	for (point &check : list) {
+	for (point check : list) {
 		if (check.x <= temp1.x && check.y <= temp1.y && !(check == temp1)) temp_list.push_back(check);
 	}
 
