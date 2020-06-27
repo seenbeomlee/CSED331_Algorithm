@@ -60,6 +60,9 @@ int ford_fulkerson(vector<edge>* node_list) {
 
     int max_flow = 0;
 
+    /* rnode_list does not needed!! 
+        you can change rnode_list to node_list and erase rnode_list */
+
     while (bfs(rnode_list, parent))
     {
         int path_flow = 10001; /* it means INT_MAX */

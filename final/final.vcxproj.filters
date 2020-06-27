@@ -15,13 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="maximum_matching.cpp">
+    <ClCompile Include="test1.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="maximum_flow.cpp">
+    <ClCompile Include="test2.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="maximum_matching_practice.cpp">
+    <ClCompile Include="test3.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
