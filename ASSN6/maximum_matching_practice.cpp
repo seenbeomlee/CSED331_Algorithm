@@ -1,7 +1,7 @@
 #include<iostream>
 #include<vector>
 #include<algorithm>
-
+// zz
 using namespace std;
 
 bool find(int start, vector<int>& a_check, vector<int>& b_check, vector<bool>& check, vector<int>* list) {

@@ -69,7 +69,7 @@ int main() {
         cin >> n >> m >> l;
 
         res = 0;
-        vector<line>* lines = new vector<line>[n]; /* container for lines */
+        vector<line>* lines = new vector<line>[n]; /* container for lines zz*/
         vector<int> a_check; a_check.assign(n, -1); /* check vertice of 'A' is connected to what */
         vector<int> b_check; b_check.assign(m, -1); /* check vertice of 'B' is connected to what */
         vector<bool> check; check.assign(n, false); /* check vertice of 'A' is connected or not? */

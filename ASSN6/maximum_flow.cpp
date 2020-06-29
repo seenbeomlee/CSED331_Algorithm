@@ -46,7 +46,7 @@ int bfs(vector<edge>* rnode_list, int* parent) {
         }
             q_list.pop();
     }
-    /* if sink is visited, there is a path root to sink */
+    /* if sink is visited, there is a path root to sink zz*/
     return visited[2*n-1];
 }
 
