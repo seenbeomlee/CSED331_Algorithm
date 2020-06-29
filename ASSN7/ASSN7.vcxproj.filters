@@ -15,16 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="TSP.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="temp.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Bulb_Control_fail.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Bulb_Control.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TSP_sol1.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TSP_sol2.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
