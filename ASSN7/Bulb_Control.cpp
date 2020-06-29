@@ -1,10 +1,11 @@
 #include<iostream>
 #include<algorithm>
-#include<vector>
+#include<cmath>
 #include<cstdlib>
 using namespace std;
 
-int res;
+int n; /* (1≤n≤20) # of bulbs = s1, s2, s3, ..., sn */
+int k; /* (1≤k≤1000) # of clauses = line1, line2, line3, ..., linek */
 
 class clause {
 public:
@@ -17,157 +18,93 @@ public:
 	}
 };
 
-void find(vector<clause> list, vector<int> text, int n, int k, int count1, int num1) {
-	/* text starts with index 1 to n */
-	if (n > k) return;
+clause list[1000]; /* array of k-clauses */
 
-	int count = count1;
-	int num = num1;
+bool find(int text, int count, int num);
 
+bool check_clause(clause temp, int text) { /* if text == 110001 then, s1 == true, s2 == false, s3 == false, s4 == false, s5 == true, s6 == true */
 
-	if (count == n) {
-		while (num != k) {
-			if (list[num].s1 < 0) {
-				if (text[abs(list[num].s1)] != 0) return;
-			}
-			else if (list[num].s1 >= 0) {
-				if (text[abs(list[num].s1)] == 0) return;
-			}
-			if (list[num].s2 < 0) {
-				if (text[abs(list[num].s2)] != 0) return;
-			}
-			else if (list[num].s2 >= 0) {
-				if (text[abs(list[num].s2)] == 0) return;
-			}
-			if (list[num].s3 < 0) {
-				if (text[abs(list[num].s3)] != 0) return;
-			}
-			else if (list[num].s3 >= 0) {
-				if (text[abs(list[num].s3)] == 0) return;
-			}
-			num++;
+	if (temp.s1 > 0) {
+		if (text & (1 << (temp.s1 - 1)))
+			return true;
 		}
-		res = 1;
-		return;
+	else {
+		if ((text & (1 << (abs(temp.s1) - 1))) == 0)
+			return true;
 	}
 
-	int check1 = 0;
-	int correct1 = 0;
-	int check2 = 0;
-	int correct2 = 0;
-	int check3 = 0;
-	int correct3 = 0;
-
-	int go = 1;
-
-	if (text[abs(list[num].s1)] != -1) {
-		check1 = 1;
-		if (list[num].s1 < 0) {
-			if (text[abs(list[num].s1)] == 0) correct1 = 1;
-		}
-		else if (list[num].s1 >= 0) {
-			if (text[abs(list[num].s1)] != 0) correct1 = 1;
-		}
-	}
-	if (text[abs(list[num].s2)] != -1) {
-		check2 = 1;
-		if (list[num].s2 < 0) {
-			if (text[abs(list[num].s2)] == 0) correct2 = 1;
-		}
-		else if (list[num].s2 >= 0) {
-			if (text[abs(list[num].s2)] != 0) correct2 = 1;
-		}
-	}
-	if (text[abs(list[num].s3)] != -1) {
-		check3 = 1;
-		if (list[num].s3 < 0) {
-			if (text[abs(list[num].s3)] == 0) correct3 = 1;
-		}
-		else if (list[num].s3 >= 0) {
-			if (text[abs(list[num].s3)] != 0) correct3 = 1;
-		}
-	}
-
-	if (check1 == 1 && check2 == 1 && check3 == 1) {
-		if (correct1 == 0 && correct2 == 0 && correct3 == 0) return;
-	}
-
-	if (check1 == 0 && check2 == 0 && check3 == 0) {
-
-			num++;
-			count++;
-			if (list[num].s1 < 0) {
-				text[abs(list[num].s1)] = 0;
-			}
-			else if (list[num].s1 >= 0) {
-				text[abs(list[num].s1)] = 1;
-			}
-			find(list, text, n, k, count, num);
-			
-			if (res == 0) {
-
-				text[abs(list[num].s1)] = -1;
-
-				if (list[num].s2 < 0) {
-					text[abs(list[num].s2)] = 0;
-				}
-				else if (list[num].s2 >= 0) {
-					text[abs(list[num].s2)] = 1;
-				}
-				find(list, text, n, k, count, num);
-			}
-
-			if (res == 0) {
-
-				text[abs(list[num].s2)] = -1;
-
-				if (list[num].s3 < 0) {
-					text[abs(list[num].s3)] = 0;
-				}
-				else if (list[num].s3 >= 0) {
-					text[abs(list[num].s3)] = 1;
-				}
-				find(list, text, n, k, count, num);
-			}
+	if (temp.s2 > 0) {
+		if (text & (1 << (temp.s2 - 1)))
+			return true;
 	}
 	else {
-		num++;
-		find(list, text, n, k, count, num);
+		if ((text & (1 << (abs(temp.s2) - 1))) == 0)
+			return true;
 	}
 
-	return;
+	if (temp.s3 > 0) {
+		if (text & (1 << (temp.s3 - 1)))
+			return true;
+	}
+	else {
+		if ((text & (1 << (abs(temp.s3) - 1))) == 0)
+			return true;
+	}
+	
+	return false;
 }
 
 int main() {
 	
 	int t;
-	int n; /* (1≤n≤20) # of bulbs */
-	int k; /* (1≤k≤1000) # of clauses */
-	int s1, s2, s3;
+	int res; /* if res == 1 then YES. if not, NO */
+
+	int s1, s2, s3; /* bulbs which are given from the k-lines */
+	/* if s < 0 then 'false' */
+	/* if s > 0 then 'true' */
 	int count; /* # of checked bulbs */
 	int num; /* # of checked clauses */
-	//long long text; /* it means n => 101 == n1 = 1, n2 = 0, n3 = 1 */
+	int text; /* it means n => 101 == n1 = 1, n2 = 0, n3 = 1 */
+
 	cin >> t;
 	for (int i = 0; i < t; i++) {
 		cin >> n >> k;
 
-		vector<clause> list;
-		vector<int> text;
 		count = 0;
 		num = 0;
+		text = 0;
 		res = 0;
-		text.assign(n+1, -1);
 
-		for (int j = 1; j < k + 1; j++) {
+		for (int j = 0; j < k; j++) {
 			cin >> s1 >> s2 >> s3;
-			list.push_back(clause(s1, s2, s3));
+			clause temp(s1, s2, s3);
+			list[j] = temp;
 		}
 
-		find(list, text, n, k, count, num);
+		res = find(text, count, num);
 
-		if (res == 0) cout << "NO" << endl;
-		else cout << "YES" << endl;
+		if (res) cout << "YES" << endl;
+		else cout << "NO" << endl;
 	}
 
 	return 0;
+}
+
+bool find(int text, int count, int num) {
+
+	bool res;
+
+	for (int i = 0; i < pow(2, n); i++) { /* 여기서 하나라도 통과하면 YES */
+		res = false;
+		for (int j = 0; j < k; j++) { /* 여기를 모두 통과하면 YES */
+			if (check_clause(list[j], text)) {
+				if (j == k - 1) res = true;
+				continue;
+			}
+			break;
+		}
+		if (res == true) return true;
+		text++;
+	}
+	return false;
 }
